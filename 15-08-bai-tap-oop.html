@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    console.time();
+    var shops = [
+        { id: 1, Name: 'tiki', income: 0 },
+        { id: 2, Name: 'lazada', income: 0 },
+        { id: 3, Name: 'shopee', income: 0 }
+    ]
+
+    var productList = [
+        { id: 1, shopId: 2, Name: 'ao so mi', price: 300000, storage: 200 },
+        { id: 2, shopId: 3, Name: 'ao khoac', price: 800000, storage: 100 },
+        { id: 3, shopId: 1, Name: 'quan bo', price: 400000, storage: 200 },
+        { id: 4, shopId: 2, Name: 'quan au', price: 500000, storage: 100 },
+        { id: 5, shopId: 3, Name: 'ao phong', price: 200000, storage: 300 },
+        { id: 6, shopId: 1, Name: 'giay the thao', price: 1000000, storage: 50 },
+    ]
+    var orders = [
+        { id: 1, total: 0, products: [{ id: 1, quantity: 3 }, { id: 6, quantity: 1 }] },
+        { id: 2, total: 0, products: [{ id: 2, quantity: 1 }, { id: 5, quantity: 5 }] }
+    ]
+
+    // Câu hỏi
+    // Hãy thêm doanh thu cho từng shop
+    // Hãy tính tổng tiền cho từng order
+    // Hãy cập nhật tồn kho cho hàng hóa
+    function updateIncome() {
+        orders.map(function (item) {
+            item.products.map(function (item) {
+                let orderProductID = item.id;
+                let orderProtuctQuantity = item.quantity;
+                productList.map(function (item) {
+                    if (orderProductID == item.id) {
+                        let productPrice = item.price;
+                        let shopId = item.shopId;
+                        shops.map(function (item) {
+                            if (shopId == item.id) {
+                                item.income = item.income + (productPrice * orderProtuctQuantity);
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    }
+
+    //Câu 1;
+    updateIncome();
+    console.table(shops);
+    console.timeEnd();
+    /*
+    orders.id = 1
+    products.id = 1 -> shops.id = 2 -> 'lazada' -> 3*300000 = 900000 ->lazada.income = 900000
+    products.id = 6 -> shops.id = 1 -> 'tiki' -> 1*1000000 = 1000000 ->tiki.income = 1tr
+
+    orders.id = 2
+    products.id = 2 -> shops.id = 3 -> 'shopee' -> 1*800000 = 800000; ->shopee.income = 800000
+    products.id = 5 -> shops.id = 3 -> 'shopee' -> 5*200000 = 1000000; -> shopee.income = 1tr8*/
+</script>
+
+</html>
