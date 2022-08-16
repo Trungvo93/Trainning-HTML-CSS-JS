@@ -13,7 +13,7 @@
 </body>
 
 <script>
-    console.time();
+    console.time(); // Tính time chạy code
     var shops = [
         { id: 1, Name: 'tiki', income: 0 },
         { id: 2, Name: 'lazada', income: 0 },
@@ -37,38 +37,40 @@
     // Hãy thêm doanh thu cho từng shop
     // Hãy tính tổng tiền cho từng order
     // Hãy cập nhật tồn kho cho hàng hóa
-    function updateIncome() {
+
+
+    //Câu 1;
+    function updateStore() {
         orders.map(function (item) {
+            let orderTotal = 0;
             item.products.map(function (item) {
                 let orderProductID = item.id;
                 let orderProtuctQuantity = item.quantity;
                 productList.map(function (item) {
                     if (orderProductID == item.id) {
+                        item.storage -= orderProtuctQuantity;
                         let productPrice = item.price;
                         let shopId = item.shopId;
+                        orderTotal += (productPrice * orderProtuctQuantity);
                         shops.map(function (item) {
                             if (shopId == item.id) {
-                                item.income = item.income + (productPrice * orderProtuctQuantity);
+                                item.income  += (productPrice * orderProtuctQuantity);
                             }
                         })
                     }
                 })
             })
+            item.total = orderTotal;
         })
     }
-
-    //Câu 1;
-    updateIncome();
+    updateStore();
+    //Câu 1
     console.table(shops);
+    //Câu 2
+    console.table(orders);
+    //Câu 3
+    console.table(productList);
     console.timeEnd();
-    /*
-    orders.id = 1
-    products.id = 1 -> shops.id = 2 -> 'lazada' -> 3*300000 = 900000 ->lazada.income = 900000
-    products.id = 6 -> shops.id = 1 -> 'tiki' -> 1*1000000 = 1000000 ->tiki.income = 1tr
-
-    orders.id = 2
-    products.id = 2 -> shops.id = 3 -> 'shopee' -> 1*800000 = 800000; ->shopee.income = 800000
-    products.id = 5 -> shops.id = 3 -> 'shopee' -> 5*200000 = 1000000; -> shopee.income = 1tr8*/
 </script>
 
 </html>
