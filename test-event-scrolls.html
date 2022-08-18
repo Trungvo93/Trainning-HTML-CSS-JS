@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active__Animation {
+        width: 500px;
+        color: white;
+        background-color: #ff6699;
+        padding: 50px;
+        margin: 10px auto;
+        /* height: 300px; */
+    }
+
+    #chayscroll {
+        height: 50px;
+        display: block;
+        margin: auto;
+    }
+
+    #activeAnimation {
+        position: relative;
+    }
+
+    .animationCircle {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        /* left: 0; */
+        animation:  5s linear;
+
+    }
+
+    .animationCircle img {
+        width: 100px;
+        
+
+    }
+
+    @keyframes delay {
+
+        0%,
+        100% {
+            transform: translate(30%,30%);
+        }
+
+        50% {
+            transform: translate(-30%,-30%);
+        }
+    }
+</style>
+
+<body>
+    <!-- <button id="chayscroll">click</button> -->
+    <div class="active__Animation" id="1">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+    <div class="active__Animation">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+    <div class="active__Animation" id="2">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+    <div class="active__Animation" id="activeAnimation">
+        <div class="animationCircle">
+            <img src="images-code/circle-svgrepo-com.svg" alt="">
+        </div>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+    <div class="active__Animation">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+    <div class="active__Animation">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+    <div class="active__Animation">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+    </div>
+</body>
+
+<script>
+    let a = document.getElementById("activeAnimation");
+    let b = document.getElementById("1");
+    let c = document.getElementById("2");
+    // let c = document.getElementById("chayscroll");
+    b.addEventListener("click", function () {
+        document.documentElement.scrollTop = a.offsetTop - a.offsetHeight;
+    })
+    // console.log(c.offsetTop)
+    console.log(a.offsetHeight)
+    console.log(a.offsetTop)
+    // console.log(a.offsetHeight)
+    // console.log(a.offsetTop - a.offsetHeight)
+    window.onscroll = function () {
+
+        // console.log(document.documentElement.scrollTop);
+        console.log((document.documentElement.scrollTop));
+        if ((document.documentElement.scrollTop + a.offsetHeight) > a.offsetTop && (document.documentElement.scrollTop < (a.offsetTop + a.offsetHeight))) {
+            a.style.backgroundColor = "#0000ff";
+            document.getElementsByClassName("animationCircle")[0].style.animationName = "delay";
+        }
+        else {
+            a.style.backgroundColor = "#ff6699";
+            document.getElementsByClassName("animationCircle")[0].style.animationName = "delays";
+        }
+
+    }
+
+</script>
+
+</html>
